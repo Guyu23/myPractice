@@ -97,7 +97,7 @@
             for (let i = 0; i < COLUMN_NUM; i++) {
                 const cell = $('<div class="drawCell"><div class="face"></div><div class="back"></div></div>')
                 const className = classList[Math.floor(Math.random() * 4)]
-                
+                // 哥们儿再加一个注释，这个是用添加、删除 class 的方法实现的翻转动画
                 cell.find('.back').addClass(className)
                 cell.click(function () {
                     $(this).toggleClass('flipped')
