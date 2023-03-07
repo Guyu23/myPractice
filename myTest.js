@@ -3,17 +3,17 @@ let b = {
     end: 100,
     async next () {
       if (this.start < this.end) {
-        return {value: this.satrt + 100, done: false}
+        return {value: this.satrt + 100, done: false};
       }
-      return {value: this.start, done: true}
+      return {value: this.start, done: true};
     },
     [Symbol.asyncIterator] () {
-      return this
+      return this;
     }
   }
   
   (async function () {
     for await (let j of b) {
-      console.log(j)
+      console.log(j);
     }
   })()
