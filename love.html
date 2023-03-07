@@ -11,33 +11,48 @@
             display: flex;
             justify-content: center;
         }
+        
+        .table {
+            border-top: 1px solid lightskyblue;
+            border-left: 1px solid lightskyblue;
+        }
 
         .drawLine {
-            display: inline-block;
+            height: 30px;
         }
 
         .drawCell {
             display: inline-block;
             height: 30px;
             width: 30px;
-            border: 1px solid lightsteelblue;
+            border-right: 1px solid lightskyblue;
+            border-bottom: 1px solid lightskyblue;
         }
+
+        .red {
+            background: red;
+        }
+
     </style>
     <title>Document</title>
 </head>
 
 <body>
-    <div class="container"></div>
+    <div class="container">
+        <div class="table">
+
+        </div>
+    </div>
     <script>
-        const ROW_NUM = 14
-        const COLUMN_NUM = 10
+        const ROW_NUM = 7
+        const COLUMN_NUM = 14
 
         function drawCanvas() {
             for (let i = 0; i < ROW_NUM; i++) {
                 const line = document.createElement('div')
                 line.classList.add('drawLine')
                 drawLine(line)
-                document.querySelector('.container').appendChild(line)
+                document.querySelector('.table').appendChild(line)
             }
         }
 
@@ -45,12 +60,13 @@
             for (let i = 0; i < COLUMN_NUM; i++) {
                 const cell = document.createElement('div')
                 cell.classList.add('drawCell')
+                cell.addEventListener('click', () => cell.classList.toggle('red'))
                 line.appendChild(cell)
             }
         }
 
         function main () {
-            drawCanvas
+            drawCanvas()
         }
 
         main()
