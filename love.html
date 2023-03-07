@@ -12,25 +12,32 @@
             justify-content: center;
         }
         
-        .table {
-            border-top: 1px solid lightskyblue;
-            border-left: 1px solid lightskyblue;
-        }
-
         .drawLine {
-            height: 30px;
+            height: 34px;
         }
 
         .drawCell {
             display: inline-block;
             height: 30px;
             width: 30px;
-            border-right: 1px solid lightskyblue;
-            border-bottom: 1px solid lightskyblue;
+            background: #ebedf0;
+            margin: 2px;
         }
 
-        .red {
-            background: red;
+        .less {
+            background: #9be9a8;
+        }
+
+        .normal {
+            background: #40c463;
+        }
+
+        .more {
+            background: #30c14e;
+        }
+
+        .awesome {
+            background: #216e39;
         }
 
     </style>
@@ -57,10 +64,13 @@
         }
 
         function drawLine(line) {
+            const classList = ['less', 'normal', 'more', 'awesome']
             for (let i = 0; i < COLUMN_NUM; i++) {
                 const cell = document.createElement('div')
+                const className = classList[Math.floor(Math.random() * 4)]
+
                 cell.classList.add('drawCell')
-                cell.addEventListener('click', () => cell.classList.toggle('red'))
+                cell.addEventListener('click', () => cell.classList.toggle(className))
                 line.appendChild(cell)
             }
         }
