@@ -1,19 +1,10 @@
-let b = {
-    start: 0,
-    end: 100,
-    async next () {
-      if (this.start < this.end) {
-        return {value: this.start++ , done: false};
-      }
-      return {value: this.start, done: true};
-    },
-    [Symbol.asyncIterator] () {
-      return this;
-    }
-  };
-  
-  (async function () {
-    for await (let j of b) {
-      console.log(j);
-    }
-  })();
+const obj = {
+  length: 1,
+  1: 'apple',
+  [Symbol.isConcatSpreadable]: true
+};
+
+const arr = ['banana', 'pear'];
+const result = arr.concat(obj);
+
+console.log(result, result.length); // 4
