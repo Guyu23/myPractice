@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./jquery.js"></script>
     <style>
         .container {
-            margin-top: 100px;
+            margin-top: 260px;
             display: flex;
             justify-content: center;
         }
-        
+
         .drawLine {
             height: 34px;
         }
@@ -20,9 +21,36 @@
             display: inline-block;
             height: 30px;
             width: 30px;
-            background: #ebedf0;
             border-radius: 4px;
             margin: 2px;
+            position: relative;
+            transform: translate3d(0, 0, 0);
+        }
+
+        .drawCell.flipped .face {
+            transform: rotateX(180deg);
+        }
+
+        .drawCell.flipped .back {
+            transform: rotateX(0deg);
+        }
+
+        .face,
+        .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 4px;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .face {
+            background: #ebedf0;
+        }
+
+        .back {
+            transform: rotateX(180deg);
         }
 
         .less {
@@ -52,31 +80,32 @@
         </div>
     </div>
     <script>
-        const ROW_NUM = 7
+        const ROW_NUM = 14
         const COLUMN_NUM = 14
 
         function drawCanvas() {
             for (let i = 0; i < ROW_NUM; i++) {
-                const line = document.createElement('div')
-                line.classList.add('drawLine')
+                const line = $('<div class="drawLine"></div>')
+
                 drawLine(line)
-                document.querySelector('.table').appendChild(line)
+                $('.table').append(line)
             }
         }
 
         function drawLine(line) {
             const classList = ['less', 'normal', 'more', 'awesome']
             for (let i = 0; i < COLUMN_NUM; i++) {
-                const cell = document.createElement('div')
+                const cell = $('<div class="drawCell"><div class="face"></div><div class="back"></div></div>')
                 const className = classList[Math.floor(Math.random() * 4)]
-
-                cell.classList.add('drawCell')
-                cell.addEventListener('click', () => cell.classList.toggle(className))
-                line.appendChild(cell)
+                cell.find('.back').addClass(className)
+                cell.click(function () {
+                    $(this).toggleClass('flipped')
+                })
+                line.append(cell)
             }
         }
 
-        function main () {
+        function main() {
             drawCanvas()
         }
 

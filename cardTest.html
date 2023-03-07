@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .card {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            perspective: 800px;
+        }
+
+        .card .front,
+        .card .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .card .front {
+            background-color: #f7dc6f;
+        }
+
+        .card .back {
+            background-color: #3498db;
+            transform: rotateX(-180deg);
+        }
+
+        .card:hover .front {
+            transform: rotateX(180deg);
+        }
+
+        .card:hover .back {
+            transform: rotateX(0deg);
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="card">
+        <div class="front">正面</div>
+        <div class="back">反面</div>
+    </div>
+</body>
+
+</html>
