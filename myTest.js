@@ -10,7 +10,7 @@ let b = {
     [Symbol.asyncIterator] () {
       return this;
     }
-  }
+  };
   
   (async function () {
     for await (let j of b) {
