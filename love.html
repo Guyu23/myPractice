@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            margin-top: 100px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .drawLine {
+            display: inline-block;
+        }
+
+        .drawCell {
+            display: inline-block;
+            height: 30px;
+            width: 30px;
+            border: 1px solid lightsteelblue;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container"></div>
+    <script>
+        const ROW_NUM = 14
+        const COLUMN_NUM = 10
+
+        function drawCanvas() {
+            for (let i = 0; i < ROW_NUM; i++) {
+                const line = document.createElement('div')
+                line.classList.add('drawLine')
+                drawLine(line)
+                document.querySelector('.container').appendChild(line)
+            }
+        }
+
+        function drawLine(line) {
+            for (let i = 0; i < COLUMN_NUM; i++) {
+                const cell = document.createElement('div')
+                cell.classList.add('drawCell')
+                line.appendChild(cell)
+            }
+        }
+
+        function main () {
+            drawCanvas
+        }
+
+        main()
+    </script>
+</body>
+
+</html>
