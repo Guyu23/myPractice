@@ -68,7 +68,6 @@
         .awesome {
             background: #216e39;
         }
-
     </style>
     <title>Document</title>
 </head>
@@ -83,7 +82,7 @@
         const ROW_NUM = 14
         const COLUMN_NUM = 14
         // 先画每一行
-        function drawCanvas() {
+        function drawCanvas () {
             for (let i = 0; i < ROW_NUM; i++) {
                 const line = $('<div class="drawLine"></div>')
 
@@ -92,7 +91,7 @@
             }
         }
         // 再画每一个格子
-        function drawLine(line) {
+        function drawLine (line) {
             const classList = ['less', 'normal', 'more', 'awesome']
             for (let i = 0; i < COLUMN_NUM; i++) {
                 const cell = $('<div class="drawCell"><div class="face"></div><div class="back"></div></div>')

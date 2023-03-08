@@ -1,10 +1,21 @@
-const obj = {
-  length: 1,
-  1: 'apple',
-  [Symbol.isConcatSpreadable]: true
+class Some {
+  constructor () {
+    this.max = 2
+    this.min = 0
+  }
+
+  // 非常关键的 async 以及 resolve
+  async * [Symbol.asyncIterator] () {
+    while (this.min < this.max) {
+      yield new Promise((resolve) => setTimeout(() => resolve(this.min++), 2000))
+    }
+  }
 };
 
-const arr = ['banana', 'pear'];
-const result = arr.concat(obj);
+const a = new Some();
 
-console.log(result, result.length); // 4
+(async function () {
+  for await (const item of a) {
+    console.log(item)
+  }
+})()
