@@ -1,21 +1,24 @@
-class Some {
+// Symbol.asyncIterator
+
+class test1 {
   constructor () {
-    this.max = 2
+    this.max = 5
     this.min = 0
   }
 
-  // 非常关键的 async 以及 resolve
   async * [Symbol.asyncIterator] () {
     while (this.min < this.max) {
-      yield new Promise((resolve) => setTimeout(() => resolve(this.min++), 2000))
+      yield new Promise((resolve) => setTimeout(() => resolve(this.min++), 1000))
     }
   }
-};
+}
 
-const a = new Some();
+const a = new test1()
 
-(async function () {
+;(async function () {
   for await (const item of a) {
     console.log(item)
   }
 })()
+
+// Symbol.hasInstance
